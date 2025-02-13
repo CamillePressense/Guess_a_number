@@ -22,7 +22,7 @@ function askANumberToGuessToPlayerOne(){
 
 function buttonValidation(){
     askANumber()
-    //document.getElementById("playernumber").innerHTML = ""
+    document.getElementById("playernumber").value = ""
     didIWin(givenNumberByPlayerTwo, numberToGuessPlayerOne)
     showResult()   
 }
@@ -58,10 +58,15 @@ function showResult(){
     
     console.log("le résultat dans la fonction est: " + result)
     if (result == true) {
+        const inputbutton = document.getElementById("button")
+        const inputnumber = document.getElementById("playernumber")
         document.getElementById("rules").innerHTML = "BRAVO, Tu as trouvé!"
+        inputnumber.style.display = "none"
+        inputbutton.style.display = "none"
         return
     } else {
         numberOfTries += 1
+        console.log("le nombre entré est " + givenNumberByPlayerTwo)
         if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo >= numberMin)){
                 numberMin = givenNumberByPlayerTwo
             } else if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo < numberMin)){
