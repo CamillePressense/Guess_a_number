@@ -1,0 +1,27 @@
+body{
+    background: linear-gradient(90deg, #ceefa7, #efaea7);
+    font-family: "Arial"; 
+    padding: 5em;  
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 3em;
+    border: 0.2em black dotted;
+    border-radius: 10px; 
+    padding: 2em;
+    gap: 1.2em;
+}
+
+h1{
+    font-family: "Jazz Let";
+    text-transform: uppercase;
+
+}
+
+#rules{
+    text-align: center;
+}

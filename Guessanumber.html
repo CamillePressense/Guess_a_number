@@ -3,16 +3,16 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="stylegan.css">
         <title>Guess a number</title>
     </head>
     <body>
-        <p>
-        <div id="rules">
-        </div>
-        <input type = "number" min = "0" max = "50" id="playernumber">
-        <br>
-        <input type = "button" value = "Valider" id="button" onclick=buttonValidation()>
-        </p>
+        <main class="container">
+            <h1> Guess a number ! </h1>
+            <div id="rules"></div>
+            <input type = "number" min = "0" max = "50" id="playernumber">
+            <input type = "button" value = "Valider" id="button" onclick=buttonValidation()>
+        </main>
 
     </body>
     
@@ -42,6 +42,7 @@ function askANumberToGuessToPlayerOne(){
 
 function buttonValidation(){
     askANumber()
+    document.getElementById("playernumber").innerHTML = ""
     didIWin(givenNumberByPlayerTwo, numberToGuessPlayerOne)
     showResult()   
 }
@@ -77,7 +78,7 @@ function showResult(){
     
     console.log("le résultat dans la fonction est: " + result)
     if (result == true) {
-        document.getElementById("rules").innerHTML = "BRAVO, Tu as trouvé! IMPRESSIONANT!"
+        document.getElementById("rules").innerHTML = "BRAVO, Tu as trouvé! IMPRESSIONNANT!"
         return
     } else {
         numberOfTries += 1
@@ -92,14 +93,15 @@ function showResult(){
             }
             }
         document.getElementById("rules").innerHTML = 
-            "Essaie encore. Devine le nombre mystère entre " + numberMin + " et " + numberMax + "\n" + "Tentative n° " + numberOfTries
+            "Essaie encore." + "<br>" + "Devine le nombre mystère entre " +
+             numberMin + " et " + numberMax + "<br>" + "Tentative n° " + numberOfTries
         } 
 
 // Je lance le jeu    
 
 function startTheGame(){
     askANumberToGuessToPlayerOne()
-    document.getElementById("rules").innerHTML = " Prêt.e à jouer à Guess a number ? Devine le nombre mystère entre " + numberMin + " et " + numberMax
+    document.getElementById("rules").innerHTML = "Devine le nombre mystère entre " + numberMin + " et " + numberMax
 }
 // J'appelle la fonction pour lancer le jeu
 
