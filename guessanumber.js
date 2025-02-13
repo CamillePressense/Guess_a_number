@@ -11,7 +11,11 @@ function askANumberToGuessToPlayerOne(){
     
     while ((numberToGuessPlayerOne < 0) || (numberToGuessPlayerOne > 50))
     {
-        numberToGuessPlayerOne = prompt("Joueur 1 : Donne moi un nombre entre 0 et 50"); 
+        numberToGuessPlayerOne = prompt("Joueur 1 : Donne moi un nombre entre 0 et 50")
+        while (isNaN(numberToGuessPlayerOne)){
+            alert("Ce n'est pas un nombre!")
+            numberToGuessPlayerOne = prompt("Joueur 1 : Donne moi un nombre entre 0 et 50")
+        }  
         console.log("Nombre entré :" + numberToGuessPlayerOne)      
     }   
 }
@@ -66,7 +70,6 @@ function showResult(){
         return
     } else {
         numberOfTries += 1
-        console.log("le nombre entré est " + givenNumberByPlayerTwo)
         if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo >= numberMin)){
                 numberMin = givenNumberByPlayerTwo
             } else if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo < numberMin)){
@@ -88,6 +91,7 @@ function startTheGame(){
     askANumberToGuessToPlayerOne()
     document.getElementById("rules").innerHTML = "Devine le nombre mystère entre " + numberMin + " et " + numberMax
 }
+
 // J'appelle la fonction pour lancer le jeu
 
 startTheGame()
