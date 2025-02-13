@@ -1,7 +1,7 @@
 //Je récupère les min et max de la range initiale autorisée.
 
-let numberMin = document.getElementById("playernumber").min
-let numberMax = document.getElementById("playernumber").max
+let numberMin = document.querySelector("#playernumber").min
+let numberMax = document.querySelector("#playernumber").max
 
 //Je demande au Joueur 1 de me founir un nombre entre 0 et 50, via une fenêtre de dialogue.   
 
@@ -26,7 +26,7 @@ function askANumberToGuessToPlayerOne(){
 
 function buttonValidation(){
     askANumber()
-    document.getElementById("playernumber").value = ""
+    document.querySelector("#playernumber").value = ""
     didIWin(givenNumberByPlayerTwo, numberToGuessPlayerOne)
     showResult()   
 }
@@ -36,7 +36,7 @@ function buttonValidation(){
 let givenNumberByPlayerTwo
 
 function askANumber(){
-    givenNumberByPlayerTwo = document.getElementById("playernumber").value;
+    givenNumberByPlayerTwo = document.querySelector("#playernumber").value;
     console.log("le nombre proposé est:" + givenNumberByPlayerTwo)
     return givenNumberByPlayerTwo;
 }
@@ -62,9 +62,9 @@ function showResult(){
     
     console.log("le résultat dans la fonction est: " + result)
     if (result == true) {
-        const inputbutton = document.getElementById("button")
-        const inputnumber = document.getElementById("playernumber")
-        document.getElementById("rules").innerHTML = "BRAVO, Tu as trouvé!"
+        const inputbutton = document.querySelector("#button")
+        const inputnumber = document.querySelector("#playernumber")
+        document.querySelector("#rules").innerHTML = "BRAVO, Tu as trouvé!"
         inputnumber.style.display = "none"
         inputbutton.style.display = "none"
         return
@@ -80,7 +80,7 @@ function showResult(){
                 alert("Le nombre est inférieur à " + numberMax)
             }
             }
-        document.getElementById("rules").innerHTML = 
+        document.querySelector("#rules").innerHTML = 
             "Essaie encore." + "<br>" + "Devine le nombre mystère entre " +
              numberMin + " et " + numberMax + "<br>" + "Tentative n° " + numberOfTries
         } 
@@ -89,7 +89,7 @@ function showResult(){
 
 function startTheGame(){
     askANumberToGuessToPlayerOne()
-    document.getElementById("rules").innerHTML = "Devine le nombre mystère entre " + numberMin + " et " + numberMax
+    document.querySelector("#rules").innerHTML = "Devine le nombre mystère entre " + numberMin + " et " + numberMax
 }
 
 // J'appelle la fonction pour lancer le jeu
