@@ -1,3 +1,5 @@
+EXERCICE INDIVIDUEL ADA_ GUESS A NUMBER
+
 1. Enoncé
 
 Le but de cet exercice individuel est de faire un petit jeu en JS qui permet de deviner un nombre.
