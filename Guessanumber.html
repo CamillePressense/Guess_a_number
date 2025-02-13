@@ -7,11 +7,9 @@
     </head>
     <body>
         <p>
-        <div id="rules">  
-        Prêt.e à jouer à "Guess a Number" ? <br>
-        Trouve le nombre mystère entre 0 et 50: <br>
+        <div id="rules">
         </div>
-        <input type = "text" id="playernumber">
+        <input type = "number" min = "0" max = "50" id="playernumber">
         <br>
         <input type = "button" value = "Valider" id="button" onclick=buttonValidation()>
         </p>
@@ -19,6 +17,10 @@
     </body>
     
     <script> 
+
+let numberMin = document.getElementById("playernumber").min
+let numberMax = document.getElementById("playernumber").max
+
 
 //Je demande au Joueur 1 de me founir un nombre entre 0 et 50, via une fenêtre de dialogue.   
 
@@ -72,21 +74,32 @@ function didIWin(givenNumberByPlayerTwo, numberToGuessPlayerOne){
 let numberOfTries = 1
 
 function showResult(){
-
+    
     console.log("le résultat dans la fonction est: " + result)
     if (result == true) {
         document.getElementById("rules").innerHTML = "BRAVO, Tu as trouvé! IMPRESSIONANT!"
         return
     } else {
-            numberOfTries += 1
-            document.getElementById("rules").innerHTML = "Essaie encore. Tentative n° " + numberOfTries
+        numberOfTries += 1
+        if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo >= numberMin)){
+                numberMin = givenNumberByPlayerTwo
+            } else if ((givenNumberByPlayerTwo < numberToGuessPlayerOne) && (givenNumberByPlayerTwo < numberMin)){
+                alert("Le nombre est supérieur à " + numberMin)
+            } else if ((givenNumberByPlayerTwo > numberToGuessPlayerOne) && (givenNumberByPlayerTwo <= numberMax)){
+                numberMax = givenNumberByPlayerTwo
+            } else {
+                alert("Le nombre est inférieur à " + numberMax)
+            }
+            }
+        document.getElementById("rules").innerHTML = 
+            "Essaie encore. Devine le nombre mystère entre " + numberMin + " et " + numberMax + "\n" + "Tentative n° " + numberOfTries
         } 
-    } 
 
 // Je lance le jeu    
-    
+
 function startTheGame(){
     askANumberToGuessToPlayerOne()
+    document.getElementById("rules").innerHTML = " Prêt.e à jouer à Guess a number ? Devine le nombre mystère entre " + numberMin + " et " + numberMax
 }
 // J'appelle la fonction pour lancer le jeu
 
@@ -100,6 +113,11 @@ En revanche, tant que l’utilisateur n’a pas trouvé le bon chiffre, on affic
 Ajouter un champ input qui permet à l’utilisateur de rentrer sa proposition de nombre directement dans un champ sur la page avec un bouton valider.
 */
 
+/*Étape 6
+Si le nombre proposé par l’utilisateur est plus petit que le nombre à deviner, alors vous changerez le range minimal. Ce ne sera plus 10 mais le dernier nombre proposé. Attention si le nombre proposé est en dessous du range minimal, cela ne sert à rien de le changer.
+Ex : 12 < ? < 45, si le nombre proposé est 10, on ne change pas le range. Mais on peut afficher une alert pour indiquer que le nombre proposé n’est pas dans le range.
+Même chose si le nombre est supérieur.
+*/
 
 
 
